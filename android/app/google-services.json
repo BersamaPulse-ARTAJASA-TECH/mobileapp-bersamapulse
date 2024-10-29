@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "560062959854",
+    "project_id": "bersamapulse",
+    "storage_bucket": "bersamapulse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560062959854:android:ac49fe0e9fdeac9843e3ff",
+        "android_client_info": {
+          "package_name": "com.artajasatechhktn.bersamapulse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560062959854-od96gr949aeq0um39ndoipjs2u4ooomq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.artajasatechhktn.bersamapulse",
+            "certificate_hash": "a87172d49404137e0a73fce97a0eaef4f211059c"
+          }
+        },
+        {
+          "client_id": "560062959854-uahe8jja1ffrdmu6le3ff1u9192k4s8a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnctiTZ6k_pzTSYtzP8YHSQ3dPLEMws1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560062959854-uahe8jja1ffrdmu6le3ff1u9192k4s8a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560062959854-v0ikmkgg47vg4ub7nmr133dnorf31ail.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.artajasatechhktn.bersamapulse"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
