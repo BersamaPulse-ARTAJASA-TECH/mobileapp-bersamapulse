@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:health/health.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+import '../health_service.dart';
+
 
 class ProfileScreen extends StatefulWidget {
+
+  final VoidCallback onHealthDataTap;
+
+  ProfileScreen({
+    required this.onHealthDataTap
+  });
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -29,7 +41,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void dispose() {
-    // Menghapus controller saat widget dibuang
     _nameController.dispose();
     _heightController.dispose();
     _weightController.dispose();
@@ -46,7 +57,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       final doc = await _firestore.collection('users').doc(user.uid).get();
       final data = doc.data();
       if (data != null) {
-        // Mengisi controller dengan data dari Firestore dan handle jika null
         setState(() {
           _nameController.text = data['name'] ?? '';
           _heightController.text = data['height']?.toString() ?? '';
@@ -64,7 +74,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (_formKey.currentState!.validate()) {
       final user = _auth.currentUser;
       if (user != null) {
-        // Mengupdate data di Firestore dengan memastikan data yang kosong
         await _firestore.collection('users').doc(user.uid).update({
           'name': _nameController.text,
           'height': _heightController.text.isNotEmpty ? int.parse(_heightController.text) : null,
@@ -80,6 +89,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       }
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +140,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: _updateUserData,
                 child: Text('Update Profile'),
               ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: widget.onHealthDataTap,
+                  child: Text('Health Data Screen')
+              )
+              // Menampilkan data yang diambil dari Health API
             ],
           ),
         ),

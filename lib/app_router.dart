@@ -1,3 +1,4 @@
+import 'package:bersamapulse/screen/health_data_screen.dart';
 import 'package:bersamapulse/screen/home_screen.dart';
 import 'package:bersamapulse/screen/login_screen.dart';
 import 'package:bersamapulse/screen/profile_screen.dart';
@@ -45,13 +46,21 @@ class AppRouterDelegate extends RouterDelegate<RouteConfiguration>
           MaterialPage(child: HomeScreen(onProfileTap: _navigateToProfile)),
 
         if (_currentConfiguration.path == '/profile')
-          MaterialPage(child: ProfileScreen()),
+          MaterialPage(child: ProfileScreen(onHealthDataTap: _navigateToHealthData)),
+
+        if (_currentConfiguration.path == '/health_data')
+          MaterialPage(child: HealthDataScreen()),
       ],
       onPopPage: (route, result) {
         if (!route.didPop(result)) return false;
         if (_currentConfiguration.path == '/profile') {
           _currentConfiguration = RouteConfiguration('/home');
         }
+
+        if (_currentConfiguration.path == '/health_data') {
+          _currentConfiguration = RouteConfiguration('/profile');
+        }
+
         notifyListeners();
         return true;
       },
@@ -60,6 +69,11 @@ class AppRouterDelegate extends RouterDelegate<RouteConfiguration>
 
   void _navigateToProfile() {
     _currentConfiguration = RouteConfiguration('/profile');
+    notifyListeners();
+  }
+
+  void _navigateToHealthData() {
+    _currentConfiguration = RouteConfiguration('/health_data');
     notifyListeners();
   }
 
